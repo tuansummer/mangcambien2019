@@ -1,0 +1,228 @@
+<html>
+    <head>
+        <style type="text/css">
+        #image {
+            height: 400px;
+            width: 25%;
+            background-color: blue;
+            float: left;
+            position: relative;
+            left: 50px;
+        }
+        #content {
+            height: 400px;
+            width: 40%;
+            float: left;
+            text-align: left;
+            padding-left: 200px;
+            position: relative;
+            left: 100px;
+        }
+        #header {
+            height: 100px;
+            width: 100%;
+            text-align: center;
+            line-height: 100px
+        }
+        #header a:hover {
+            background-color: red;
+        }
+    </style>
+      <style type="text/css">
+        *{ margin: 0px; padding: 0px;}
+a{ text-decoration: none; color: #888;}
+ul li{ list-style: none;}
+.clearfix:after {
+    content: ".";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    line-height: 0;
+    height: 0;
+}
+.clearfix {
+    clear: both;
+    display: block;
+}
+body{ font-family: arial; font-size: 13px; }
+
+.wrapper_container{
+    width: 960px;
+    margin: 0px auto;
+}
+
+/*this is style header*/
+#head{ background: #f4f4f4;}
+#logo, #main_menu{ float: left;}
+#logo img{height: 42px;
+margin-top: 5px;}
+#search{ float: right;}
+
+#main_menu>li{ float: left; border-right: 1px solid #E8E8E8;}
+#main_menu>li:last-child{ border-right: none;}
+#main_menu li{ position: relative;}
+#main_menu>li a{display: block; text-transform: none; padding: 10px;}
+#main_menu>li>a{ text-transform: uppercase;}
+#main_menu>li>a{ display: block; padding: 20px;}
+
+#main_menu li .sub_menu{ position: absolute; display: none;
+width: 200px;
+background: #f5f5f5;
+top: 0px;
+left: 100%;
+}
+#main_menu li:hover>.sub_menu { display: block;}
+#main_menu>li>.sub_menu{top: 55px;position: absolute;
+left: 0px;}
+#main_menu li:hover{ background: #fcfcfc;}
+
+#search input[type='text']{width: 139px;
+margin-top: 14px;
+padding: 5px;
+outline: none;
+background: #EFEFEF;
+background: url(../images/search.png) no-repeat 106px 2px;
+border: none;
+background-size: 28px;}
+
+
+/*this is style main_content*/
+#main_content { min-height: 50px;}
+#main_content .info_page p{ text-align: center; text-transform: uppercase; }
+#main_content .info_page p:first-child{ font-size: 35px;
+color: #f00;
+margin-top: 40px;
+margin-bottom: 7px;}
+#main_content .info_page p:last-child{ color: #E48585;}
+
+
+/*this is style footer*/
+#footer{  background: #BACFED;
+padding: 20px 0px
+color: #222386;/*Mau' chu~*/
+line-height: 20px;
+}
+#footer .info p:first-child{ text-transform: uppercase;}
+
+      </style>
+     
+        <script src="jquery.js"></script>
+        <script src="socket.io/socket.io.js"></script>
+        <script>
+        //goi dien len server
+        var socket = io("http://localhost:3000");
+
+        $(document).ready(function(){
+            $("#mrA").click(function(){
+                socket.emit("client-connect","HELLO");
+            });
+        });
+        </script>
+
+        <title>TuanSummer</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+    </head>
+    <body>
+        <div id="wrapper">
+            <div id="head" class="clearfix">
+                <div class="wrapper_container">
+                    <div id="logo">
+                        <a href="">
+                            <img src="logo.png">
+                        </a>
+                    </div>
+                    <ul id="main_menu">
+                        <li><a href="">Đỗ VĂN TUẤN</a></li>
+                        <li>
+                            <a href="">Hoc van</a>
+                            <ul class="sub_menu">
+                                <li><a href="">abc</a>
+                                    <ul class="sub_menu">
+                                        <li><a href="">Hải Phòng </a></li>
+                                        <li><a href="">Hà Nội</a>
+                                            <ul class="sub_menu">
+                                                <li><a href="">Tây Hồ</a></li>
+                                                <li><a href="">Đống Đa</a></li>
+                                                <li><a href="">Hoàng Mai</a></li>
+                                                <li><a href="">Thanh Xuân</a>
+                                                    <ul class="sub_menu">
+                                                        <li><a href="">Bưu Chính </a></li>
+                                                        <li><a href="">Kiến Trúc</a></li>
+                                                        <li><a href="">Y Học Cổ Truyền</a></li>
+                                                        <li><a href="">Học Viện An Ninh </a></li>
+                                                        <li><a href="">Văn Q </a></li>
+                                                    </ul></li>
+                                                <li><a href="">Từ Liêm</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="">Quảng Ninh</a></li>
+                                        <li><a href="">Điện Biên</a></li>
+                                        <li><a href="">Hòa Bình </a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="">bang cap</a></li>
+                                <li><a href="">diem hoc phan </a></li>
+                                <li><a href="">so truong</a></li>
+                                <li><a href="">Nghien cuu khoa hoc</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="">Family</a></li>
+                        <li><a href="">Male</a></li>
+                        <li><a href="">Country</a></li>
+                        <li><a href="">Properties</a></li>
+                        <li><a href="">Liên hệ</a></li>
+                    </ul>
+                    <form id="search">
+                        <input type="text" name="s" placeholder="Tìm kiếm">
+                    </form>
+      
+
+                </div>
+            </div>
+            </br>
+            <div>
+    <div id="image">
+        <img src="tuansummer.jpg" height="400px" width="100%">
+        
+    </div>
+    <div id="content">
+        </br></br></br></br></br></br></br></br>
+        <h3>Name: Tuan Summer</h3>
+        <h3>Born: 07/04/95</h3>
+        <h3>Phone: 123456789</h3>
+        <h3>Email: tuansc1995.ptit@gmail.com</h3>
+        <h3>Address: Thai Binh,Vietnam</h3>
+    </div>
+    </div>
+</div>
+
+            <div class="clearfix"></div>
+
+            <div id="main_content">
+                <div class="wrapper_container">
+                    <div class="info_page">
+                        <p class="website">MY PROFILE</p>
+                        <p class="tuts_name">Hoc Vien Cong Nghe Buu Chinh Vien Thong</p>
+
+                    </div>
+                </div>
+            </div>
+     </br>
+         
+
+            <div id="footer">
+                <div class="wrapper_container">
+                    <div class="info">
+                        <p>TuanSummer-Studio     Thái Bình PROVINCE</p>
+                        <p>Địa Vũ Thư - Thái Binh'</p>
+                        <p>Tel:092590xxxx</p>
+                        <p>Facebook:TuanSummer</p>
+                        <p>Email:tuansc1995@gmail.com</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
